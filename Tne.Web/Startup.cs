@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using Tne.Web.Services;
 
 namespace Tne.Web
@@ -41,6 +42,7 @@ namespace Tne.Web
 
             services.AddScoped<CountersRepository>();
             services.AddScoped<IJsonGetter,JsonGetter>();
+            services.AddSwaggerGen(c=>c.SwaggerDoc("v1", new Info {Title="Core api" ,Description="swagger core api"}));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -68,6 +70,10 @@ namespace Tne.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c=>c.SwaggerEndpoint("/swagger/v1/swagger.json","Core api"));
+
         }
     }
 }
