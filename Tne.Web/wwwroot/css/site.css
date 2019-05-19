@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
+    /*   padding-top: 50px; */
     padding-bottom: 20px;
 }
 
@@ -34,4 +34,22 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+
+.validation-summary-valid, .field-validation-valid {
+    display: none;
+}
+
+
+.alert.alert-danger {
+    display: block;
+}
+
+    .alert.alert-danger:empty {
+        display: none;
+    }
+
+.m-b-50 {
+    margin-bottom: 50px;
 }

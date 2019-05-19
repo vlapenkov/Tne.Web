@@ -1,0 +1,30 @@
+﻿@using Tne.Web.Dal
+@model IEnumerable<Counter>
+
+
+<table class="table table-striped table-responsive">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Дата проверки</td>
+            <td>Наименование</td>
+            <td>Тип счетчика</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CheckDate.ToShortDateString()</td>
+                <td>@item.PointOfMeasure.Name</td>
+                <td>@item.CounterType</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
