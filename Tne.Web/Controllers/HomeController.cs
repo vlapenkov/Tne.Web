@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Tne.Web.Dal;
 using Tne.Web.Models;
@@ -18,10 +19,13 @@ namespace Tne.Web.Controllers
     {
         AppDbContext _dbContext;
         IJsonGetter _jsonGetter;
-        public HomeController(AppDbContext dbContext , IJsonGetter jsonGetter)
+        ILogger<HomeController> _logger;
+        public HomeController(AppDbContext dbContext , IJsonGetter jsonGetter, ILogger<HomeController> logger)
         {
             _dbContext = dbContext;
             _jsonGetter = jsonGetter;
+            _logger= logger;
+            
 
         }
 
@@ -36,6 +40,7 @@ namespace Tne.Web.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index( int? id , int typeId=1)
         {
+            _logger.LogInformation($"oh hai there! : {DateTime.UtcNow}");
             string json;
             var vm = new CounterVm
             {
