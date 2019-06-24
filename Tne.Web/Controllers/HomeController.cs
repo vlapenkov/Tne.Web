@@ -14,7 +14,9 @@ using Tne.Web.Services;
 
 namespace Tne.Web.Controllers
 {
-        
+        /// <summary>
+        /// Home controller
+        /// </summary>
     public class HomeController : Controller
     {
         AppDbContext _dbContext;
